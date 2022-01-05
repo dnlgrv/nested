@@ -1,11 +1,15 @@
-<%= form_with model: chapter, url: book_chapters_path(chapter.book), class: "row g-2 align-items-center" do |f| %>
-  <div class="col-auto">
+<%= form_with model: chapter, url: [chapter.book, chapter], class: "row g-2 align-items-center" do |f| %>
+  <div class="col">
     <%= f.label :title, class: "visually-hidden" %>
     <%= f.text_field :title, class: "form-control", placeholder: "The Boy Who Lived..." %>
   </div>
 
   <div class="col-auto">
-    <%= f.submit "Save Chapter", class: "btn btn-primary" %>
+    <% unless chapter.new_record? %>
+      <%= link_to "Cancel", :back, class: "btn btn-link" %>
+    <% end %>
+
+    <%= f.submit chapter.new_record? ? "Add Chapter" : "Save Chapter", class: "btn btn-primary" %>
   </div>
 
   <% unless chapter.errors.empty? %>

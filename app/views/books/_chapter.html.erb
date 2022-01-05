@@ -1,3 +1,13 @@
 <li id="<%= dom_id(chapter) %>" class="list-group-item">
-  <%= chapter.title %>
+  <%= turbo_frame_tag chapter do %>
+    <div class="row">
+      <div class="col">
+        <%= chapter.title %>
+      </div>
+
+      <div class="col-auto">
+        <%= link_to "Edit", edit_book_chapter_path(chapter.book, chapter) %>
+      </div>
+    </div>
+  <% end %>
 </li>

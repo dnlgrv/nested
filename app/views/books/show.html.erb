@@ -8,11 +8,9 @@
 
 <h2 class="mb-3">Chapters</h2>
 
-<div class="list-group mb-3" id="chapters">
+<div class="list-group mb-3">
   <%= render collection: @book.chapters, partial: "books/chapter", as: :chapter %>
-</div>
 
-<div class="list-group">
   <div class="list-group-item" id="new_chapter">
     <%= render "chapters/form", chapter: @book.chapters.build %>
   </div>
