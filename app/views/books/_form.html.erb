@@ -1,0 +1,16 @@
+<%= form_with model: book do |f| %>
+  <div class=" mb-4">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Harry Potter..." %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :cover %>
+    <%= f.file_field :cover, class: "form-control" %>
+  </div>
+
+  <div class="p-4 bg-light border-top d-flex justify-content-between">
+    <%= link_to "Cancel", :back, class: "btn btn-outline-secondary" %>
+    <%= f.submit "Save Book", class: "btn btn-primary" %>
+  </div>
+<% end %>
