@@ -16,6 +16,6 @@
 
   <div class="p-4 bg-light border-top d-flex justify-content-between">
     <%= link_to "Cancel", :back, class: "btn btn-outline-secondary" %>
-    <%= f.submit "Save Book", class: "btn btn-primary" %>
+    <%= f.submit book.new_record? ? "Add Book" : "Save Book", class: "btn btn-primary" %>
   </div>
 <% end %>

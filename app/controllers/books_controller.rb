@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.all.includes(:chapters)
   end
 
   def show
@@ -18,6 +18,20 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       render :new
+    end
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    if @book.update(book_params)
+      redirect_to @book
+    else
+      render :edit
     end
   end
 
