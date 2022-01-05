@@ -9,6 +9,11 @@
     <%= f.file_field :cover, class: "form-control" %>
   </div>
 
+  <div class=" mb-4">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis, class: "form-control", placeholder: "..." %>
+  </div>
+
   <div class="p-4 bg-light border-top d-flex justify-content-between">
     <%= link_to "Cancel", :back, class: "btn btn-outline-secondary" %>
     <%= f.submit "Save Book", class: "btn btn-primary" %>
