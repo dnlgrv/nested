@@ -37,6 +37,17 @@ class ChaptersController < ApplicationController
     end
   end
 
+  def destroy
+    @chapter = @book.chapters.find(params[:id])
+
+    respond_to do |format|
+      if @chapter.destroy
+        format.html { redirect_to book_path(@book) }
+        format.turbo_stream
+      end
+    end
+  end
+
   private
     def set_book
       @book = Book.find(params[:book_id])

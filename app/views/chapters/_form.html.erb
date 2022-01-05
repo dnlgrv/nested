@@ -1,20 +1,30 @@
-<%= form_with model: chapter, url: [chapter.book, chapter], class: "row g-2 align-items-center" do |f| %>
-  <div class="col">
-    <%= f.label :title, class: "visually-hidden" %>
-    <%= f.text_field :title, class: "form-control", placeholder: "The Boy Who Lived..." %>
-  </div>
+<div>
+  <%= form_with model: chapter, url: [chapter.book, chapter], class: "row g-2" do |f| %>
+    <div class="col">
+      <%= f.label :title, class: "visually-hidden" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "The Boy Who Lived..." %>
+    </div>
 
-  <div class="col-auto">
-    <% unless chapter.new_record? %>
-      <%= link_to "Cancel", :back, class: "btn btn-link" %>
-    <% end %>
-
-    <%= f.submit chapter.new_record? ? "Add Chapter" : "Save Chapter", class: "btn btn-primary" %>
-  </div>
+    <div class="col-auto">
+      <%= f.submit chapter.new_record? ? "Add Chapter" : "Save Chapter", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
   <% unless chapter.errors.empty? %>
     <div class="col text-danger">
       <%= chapter.errors.full_messages.join(", ") %>
     </div>
   <% end %>
-<% end %>
+
+  <% unless chapter.new_record? %>
+    <div class="row g-2 mt-2">
+      <div class="col-auto">
+        <%= link_to "Cancel", :back, class: "btn btn-link" %>
+      </div>
+
+      <div class="col-auto">
+        <%= button_to "Delete", book_chapter_path([chapter.book, chapter]), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
