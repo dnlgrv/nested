@@ -1,0 +1,16 @@
+<%= form_with model: chapter, url: book_chapters_path(chapter.book), class: "row g-2 align-items-center" do |f| %>
+  <div class="col-auto">
+    <%= f.label :title, class: "visually-hidden" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "The Boy Who Lived..." %>
+  </div>
+
+  <div class="col-auto">
+    <%= f.submit "Save Chapter", class: "btn btn-primary" %>
+  </div>
+
+  <% unless chapter.errors.empty? %>
+    <div class="col text-danger">
+      <%= chapter.errors.full_messages.join(", ") %>
+    </div>
+  <% end %>
+<% end %>

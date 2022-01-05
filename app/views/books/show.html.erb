@@ -6,20 +6,14 @@
   <%= simple_format @book.synopsis, class: "lead" %>
 </div>
 
-<div class="row align-items-center g-4">
-  <div class="col-auto">
-    <h2>Chapters</h2>
-  </div>
+<h2 class="mb-3">Chapters</h2>
 
-  <div class="col">
-    <%= link_to "New Chapter", new_book_chapter_path(@book), class: "btn btn-outline-secondary" %>
-  </div>
+<div class="list-group mb-3" id="chapters">
+  <%= render collection: @book.chapters, partial: "books/chapter", as: :chapter %>
 </div>
 
-<ul>
-  <% @book.chapters.each do |chapter| %>
-    <li>
-      <%= chapter.title %>
-    </li>
-  <% end %>
-</ul>
+<div class="list-group">
+  <div class="list-group-item" id="new_chapter">
+    <%= render "chapters/form", chapter: @book.chapters.build %>
+  </div>
+</div>

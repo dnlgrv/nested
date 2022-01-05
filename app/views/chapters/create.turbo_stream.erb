@@ -1,0 +1,2 @@
+<%= turbo_stream.append(:chapters, partial: "books/chapter", locals: { chapter: @chapter }) %>
+<%= turbo_stream.update(:new_chapter, partial: "chapters/form", locals: { chapter: @book.chapters.build }) %>
