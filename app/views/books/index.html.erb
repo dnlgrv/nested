@@ -14,7 +14,9 @@
   <% @books.each do |book| %>
     <div class="col">
       <div class="card h-100">
-        <%= image_tag book.cover %>
+        <% if book.cover.attached? %>
+          <%= image_tag book.cover %>
+        <% end %>
 
         <div class="card-body">
           <h2 class="h5 card-title">
